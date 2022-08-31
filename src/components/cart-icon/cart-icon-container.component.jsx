@@ -1,14 +1,14 @@
 import React from 'react'
 import { useReactiveVar } from '@apollo/client'
-import { cartHiddenVar } from '../..'
-import CartItem from '../cart-item/cart-item.component'
+import { cartHiddenVar, cartItemsCountVar } from '../../graphql/graph';
 
-const HeaderContainer = () => {
-  const cartHidden = useReactiveVar(cartHiddenVar)
-  console.log('cartHidden', cartHidden);
+import CartIcon from "./cart-icon.component"
+
+const CartIconContainer = () => {
+  const cartItemsCount = useReactiveVar(cartItemsCountVar)
   return (
-      <CartItem  />
+    <CartIcon cartHiddenVar={cartHiddenVar} itemCount = { cartItemsCount } />
   )
 }
 
-export default HeaderContainer
+export default CartIconContainer

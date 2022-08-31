@@ -5,16 +5,29 @@ const link = new HttpLink({
 })
 
 export const cartHiddenVar = makeVar(true);
-const cache = new InMemoryCache({ 
+export const cartItemsVar = makeVar([])
+export const cartItemsCountVar = makeVar(0)
+const cache = new InMemoryCache({
   typePolicies: {
     Query: {
       cartHidden: {
-          read() {
-            return cartHiddenVar();
-          }
-        }
-      }
-  }
+        read() {
+          return cartHiddenVar()
+        },
+      },
+      cartItems: {
+        read() {
+          return cartItemsVar()
+        },
+      },
+
+      cartItemsCount: {
+        read() {
+          return cartItemsCountVar()
+        },
+      },
+    },
+  },
 })
 export const client = new ApolloClient({
   link,
