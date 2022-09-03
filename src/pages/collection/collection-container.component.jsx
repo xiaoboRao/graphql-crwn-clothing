@@ -20,7 +20,6 @@ const GET_COLLECTIONS_BY_TITLE = gql`
 `
 
 const CollectionContainer = ({ match }) => {
-  console.log('match', match)
   const title = match.params.collectionId
  
   const { loading, error, data } = useQuery(GET_COLLECTIONS_BY_TITLE, {
